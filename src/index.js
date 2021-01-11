@@ -3,10 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from "react-redux";
+import { createStore, combineReducers } from "redux";
+// import reducer from "./store/reducer";
+import reducerA from "./store/reducerA";
+import reducerB from "./store/reducerB";
+
+const rootReducer = combineReducers({
+  redA: reducerA,
+  redB: reducerB
+})
+const store = createStore(rootReducer);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+     <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
